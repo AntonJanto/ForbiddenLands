@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<view:ContentPageBase xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ForbiddenLands.App.Views.CharacterSheetPage"
+             Title="{Binding Title}"
+             xmlns:view="clr-namespace:ForbiddenLands.App.Views"
+             xmlns:vm="clr-namespace:ForbiddenLands.App.ViewModels" 
+             xmlns:localization="clr-namespace:ForbiddenLands.App.Localization"
+             x:DataType="vm:CharacterSheetViewModel">
+    <ContentPage.Resources>
+        <StyleSheet Source="../Styles/CharacterStyles.css" />
+    </ContentPage.Resources>
+    <RefreshView Command="{Binding RefreshCommand}" IsRefreshing="{Binding IsBusy, Mode=OneWay}">
+        <ScrollView>
+            <StackLayout Padding="15">
+                <StackLayout>
+                    <StackLayout StyleClass="header">
+                        <Label Text="{x:Static localization:Dictionary.Attributes}" HorizontalOptions="Center" />
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="{x:Static localization:Dictionary.Strength}" />
+                        <Label Text="{Binding StrengthCurrent}" />
+                        <Label Text="/" />
+                        <Label Text="{Binding StrengthTotal}" />
+                        <Button Padding="0" Text="-" Command="{Binding DecrementStrengthCommand}" />
+                        <Button Padding="0" Text="+" Command="{Binding IncrementStrengthCommand}" />
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="{x:Static localization:Dictionary.Agility}" />
+                        <Label Text="{Binding AgilityCurrent}" />
+                        <Label Text="/" />
+                        <Label Text="{Binding AgilityTotal}" />
+                        <Button Padding="0" Text="-" Command="{Binding DecrementAgilityCommand}" />
+                        <Button Padding="0" Text="+" Command="{Binding IncrementAgilityCommand}" />
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="{x:Static localization:Dictionary.Wits}" />
+                        <Label Text="{Binding WitsCurrent}" />
+                        <Label Text="/" />
+                        <Label Text="{Binding WitsTotal}" />
+                        <Button Padding="0" Text="-" Command="{Binding DecrementWitsCommand}" />
+                        <Button Padding="0" Text="+" Command="{Binding IncrementWitsCommand}" />
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="{x:Static localization:Dictionary.Empathy}" />
+                        <Label Text="{Binding EmpathyCurrent}" />
+                        <Label Text="/" />
+                        <Label Text="{Binding EmpathyTotal}" />
+                        <Button Padding="0" Text="-" Command="{Binding DecrementEmpathyCommand}" />
+                        <Button Padding="0" Text="+" Command="{Binding IncrementEmpathyCommand}" />
+                    </StackLayout>
+                </StackLayout>
+
+                <StackLayout>
+                    <StackLayout StyleClass="header">
+                        <Label Text="{x:Static localization:Dictionary.Skills}"  HorizontalOptions="Center"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="{x:Static localization:Dictionary.Might}" />
+                        <Label Text="{Binding MightLevel}" />
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="{x:Static localization:Dictionary.Endurance}" />
+                        <Label Text="{Binding EnduranceLevel}" />
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="{x:Static localization:Dictionary.Melee}" />
+                        <Label Text="{Binding MeleeLevel}"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="{x:Static localization:Dictionary.Crafting}" />
+                        <Label Text="{Binding CraftingLevel}"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="{x:Static localization:Dictionary.Stealth}" />
+                        <Label Text="{Binding StealthLevel}"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="{x:Static localization:Dictionary.SleightOfHand}" />
+                        <Label Text="{Binding SleightOfHandLevel}"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="{x:Static localization:Dictionary.Move}" />
+                        <Label Text="{Binding MoveLevel}"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="{x:Static localization:Dictionary.Marksmanship}" />
+                        <Label Text="{Binding MarksmanshipLevel}"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="{x:Static localization:Dictionary.Scouting}" />
+                        <Label Text="{Binding ScoutingLevel}"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="{x:Static localization:Dictionary.Lore}" />
+                        <Label Text="{Binding LoreLevel}"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="{x:Static localization:Dictionary.Survival}" />
+                        <Label Text="{Binding SurvivalLevel}"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="{x:Static localization:Dictionary.Insight}" />
+                        <Label Text="{Binding InsightLevel}"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="{x:Static localization:Dictionary.Manipulation}" />
+                        <Label Text="{Binding ManipulationLevel}"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="{x:Static localization:Dictionary.Performance}" />
+                        <Label Text="{Binding PerformanceLevel}"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="{x:Static localization:Dictionary.Healing}" />
+                        <Label Text="{Binding HealingLevel}"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="{x:Static localization:Dictionary.AnimalHandling}" />
+                        <Label Text="{Binding AnimalHandlingLevel}"/>
+                    </StackLayout>
+                </StackLayout>
+                <StackLayout>
+                    <Button Command="{Binding SaveCommand}" Text="Save" />
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </RefreshView>
+</view:ContentPageBase>

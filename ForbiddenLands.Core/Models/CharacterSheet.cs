@@ -12,6 +12,7 @@ namespace ForbiddenLands.Core.Models
 
         }
 
+        public int Id { get; set; }
         public List<Talent> Talents { get; set; }
         public List<Weapon> Weapons { get; set; }
         public string Name { get; set; }
@@ -39,8 +40,6 @@ namespace ForbiddenLands.Core.Models
         public Skill Healing { get; set; }
         public Skill AnimalHandling { get; set; }
         #endregion
-
-
 
         public static CharacterSheet Create()
         {

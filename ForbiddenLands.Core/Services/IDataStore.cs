@@ -7,7 +7,8 @@ namespace ForbiddenLands.Core.Services
 {
     public interface IDataStore
     {
-        Task<CharacterSheet> GetCharacterSheetAsync(string name);
+        Task<CharacterSheet> GetCharacterSheetAsync(int characterId);
         Task<List<Talent>> GetTalentListAsync();
+        Task SaveChanges();
     }
 }

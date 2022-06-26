@@ -6,26 +6,37 @@ using ForbiddenLands.Core.Models.Skills;
 using ForbiddenLands.Core.Services;
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Reflection;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace ForbiddenLands.Data.File
+namespace ForbiddenLands.Data.FileSystem
 {
     public class MockCharacterData : IDataStore
     {
-        public Task<CharacterSheet> GetCharacterSheetAsync(string name)
+
+        public MockCharacterData()
         {
-            return Task.FromResult(MockCharacter());
+
         }
 
-        public Task<List<Talent>> GetTalentListAsync()
+        public async Task<CharacterSheet> GetCharacterSheetAsync(int characterId)
         {
-            return Task.FromResult(MockTalents());
+            return await Task.FromResult(MockCharacter());
         }
 
-        private CharacterSheet MockCharacter()
+        public async Task<List<Talent>> GetTalentListAsync()
+        {
+            return await Task.FromResult(MockTalents());
+        }
+
+        public CharacterSheet MockCharacter()
         {
             CharacterSheet character = new CharacterSheet();
+
+            character.Id = 1;
             character.Name = "Tondo";
 
             character.Age = new AdultAge() { AgeInYears = 32 };
@@ -33,7 +44,7 @@ namespace ForbiddenLands.Data.File
             character.Strength = new StrengthAttribute() { CurrentDie = 4, TotalDie = 4 };
             character.Agility = new AgilityAttribute() { CurrentDie = 2, TotalDie = 2 };
             character.Wits = new WitsAttribute() { CurrentDie = 3, TotalDie = 3 };
-            character.Empathy = new EmpathyAttribute() { CurrentDie = 5, TotalDie = 5 };
+            character.Empathy = new EmpathyAttribute() { CurrentDie = 2, TotalDie = 5 };
 
             character.Might = new MightSkill(character.Strength) { Level = 1 };
             character.Endurance = new EnduranceSkill(character.Strength);
@@ -53,8 +64,7 @@ namespace ForbiddenLands.Data.File
             character.AnimalHandling = new AnimalHandlingSkill(character.Empathy);
 
             character.Talents = MockTalents();
-            character.Weapons = MockWeapons();
-
+            character.Weapons = MockWeapons(); 
             return character;
         }
 
@@ -94,5 +104,9 @@ namespace ForbiddenLands.Data.File
             };
         }
 
+        public Task SaveChanges()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

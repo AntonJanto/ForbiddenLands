@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace ForbiddenLands.App.ViewModels
@@ -50,5 +51,9 @@ namespace ForbiddenLands.App.ViewModels
             changed.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
         #endregion
+
+        public virtual async Task OnAppearing()
+        {
+        }
     }
 }
