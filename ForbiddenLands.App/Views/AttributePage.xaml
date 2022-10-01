@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ForbiddenLands.App.Views.AttributePage"
+             BackgroundColor="{StaticResource Gray950}"
+             BackgroundImageSource="box_border_large.webp"
+             Title="Vlastnosti">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Label">
+                <Setter Property="FontFamily" Value="FellPicaRegular"/>
+                <Setter Property="FontSize" Value="20" />
+                <Setter Property="HorizontalOptions" Value="Center"/>
+            </Style>
+            <Style TargetType="Entry">
+                <Setter Property="FontFamily" Value="FellPicaRegular"/>
+                <Setter Property="FontSize" Value="24" />
+                <Setter Property="HorizontalOptions" Value="Center"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <VerticalStackLayout Padding="30" Spacing="10" HorizontalOptions="FillAndExpand">
+
+        <Grid RowDefinitions="Auto,Auto,Auto,Auto" ColumnDefinitions="*,*,*">
+            <Button Grid.Row="0" Grid.Column="0"
+                    Text="-"
+                    FontFamily="FellPicaRegular"
+                    FontSize="30"
+                    TextColor="{StaticResource Gray950}"
+                    BackgroundColor="{StaticResource Transparent}"
+                    Command="{Binding DecrementStrengthCommand}"/>
+
+            <VerticalStackLayout Grid.Row="0" Grid.Column="1">
+                <Label Text="Síla"
+                       FontFamily="FellPicaRegular"/>
+                <Entry Keyboard="Numeric" 
+                       Text="{Binding Strength}" />
+            </VerticalStackLayout>
+
+            <Button Grid.Row="0" Grid.Column="2"
+                    Text="+"
+                    FontFamily="FellPicaRegular"
+                    FontSize="30"
+                    TextColor="{StaticResource Gray950}"
+                    BackgroundColor="{StaticResource Transparent}"
+                    Command="{Binding IncrementStrengthCommand}" />
+
+
+            <Button Grid.Row="1" Grid.Column="0"
+                    Text="-"
+                    FontFamily="FellPicaRegular"
+                    FontSize="30"
+                    TextColor="{StaticResource Gray950}"
+                    BackgroundColor="{StaticResource Transparent}"
+                    Command="{Binding DecrementAgilityCommand}" />
+
+
+            <VerticalStackLayout Grid.Row="1" Grid.Column="1">
+                <Label Text="Obratnost" />
+                <Entry Keyboard="Numeric" 
+                       Text="{Binding Agility}" />
+            </VerticalStackLayout>
+
+            <Button Grid.Row="1" Grid.Column="2"
+                    Text="+"
+                    FontFamily="FellPicaRegular"
+                    FontSize="30"
+                    TextColor="{StaticResource Gray950}"
+                    BackgroundColor="{StaticResource Transparent}" 
+                    Command="{Binding IncrementAgilityCommand}" />
+
+
+            <Button Grid.Row="2" Grid.Column="0"
+                    Text="-"
+                    FontFamily="FellPicaRegular"
+                    FontSize="30"
+                    TextColor="{StaticResource Gray950}"
+                    BackgroundColor="{StaticResource Transparent}"
+                    Command="{Binding DecrementWitsCommand}" />
+
+
+            <VerticalStackLayout Grid.Row="2" Grid.Column="1">
+                <Label Text="Bystrost" />
+                <Entry Keyboard="Numeric" 
+                       Text="{Binding Wits}" />
+            </VerticalStackLayout>
+
+            <Button Grid.Row="2" Grid.Column="2"
+                    Text="+"
+                    FontFamily="FellPicaRegular"
+                    FontSize="30"
+                    TextColor="{StaticResource Gray950}"
+                    BackgroundColor="{StaticResource Transparent}"
+                    Command="{Binding incrementWitsCommand}" />
+
+
+            <Button Grid.Row="3" Grid.Column="0"
+                    Text="-"
+                    FontFamily="FellPicaRegular"
+                    FontSize="30"
+                    TextColor="{StaticResource Gray950}"
+                    BackgroundColor="{StaticResource Transparent}"
+                    Command="{Binding DecrementEmpathyCommand}" />
+
+
+            <VerticalStackLayout Grid.Row="3" Grid.Column="1">
+                <Label Text="Osobnost" />
+                <Entry Keyboard="Numeric" 
+                       Text="{Binding Empathy}" />
+            </VerticalStackLayout>
+
+            <Button Grid.Row="3" Grid.Column="2"
+                    Text="+"
+                    FontFamily="FellPicaRegular"
+                    FontSize="30"
+                    TextColor="{StaticResource Gray950}"
+                    BackgroundColor="{StaticResource Transparent}"
+                    Command="{Binding IncrementEmpathyCommand}"  />
+
+        </Grid>
+
+        <Image Source="endstop.webp" />
+
+
+        <Grid RowDefinitions="Auto,Auto" ColumnDefinitions="*,*,*">
+
+            <Button Grid.Row="0" Grid.Column="0"
+                    Text="-"
+                    Command="{Binding DecrementExperienceCommand}"
+                    FontFamily="FellPicaRegular"
+                    FontSize="30"
+                    TextColor="{StaticResource Gray950}"
+                    BackgroundColor="{StaticResource Transparent}" />
+
+
+            <VerticalStackLayout Grid.Row="0" Grid.Column="1">
+                <Label Text="Zkušenosti" />
+                <Entry Keyboard="Numeric" 
+                       Text="{Binding Experience}"
+                       Margin="2" />
+            </VerticalStackLayout>
+
+            <Button Grid.Row="0" Grid.Column="2"
+                    Text="+"
+                    Command="{Binding IncrementExperienceCommand}"
+                    FontFamily="FellPicaRegular"
+                    FontSize="30"
+                    TextColor="{StaticResource Gray950}"
+                    BackgroundColor="{StaticResource Transparent}" />
+
+
+            <Button Grid.Row="1" Grid.Column="0"
+                    Text="-"
+                    Command="{Binding DecrementWillPointsCommand}"
+                    FontFamily="FellPicaRegular"
+                    FontSize="30"
+                    TextColor="{StaticResource Gray950}"
+                    BackgroundColor="{StaticResource Transparent}"/>
+
+
+            <VerticalStackLayout Grid.Row="1" Grid.Column="1">
+                <Label Text="Body vůle" />
+                <Entry Keyboard="Numeric" 
+                       Text="{Binding WillPoints}"
+                       Margin="2" />
+            </VerticalStackLayout>
+
+            <Button Grid.Row="1" Grid.Column="2"
+                    Text="+"
+                    Command="{Binding IncrementWillPointsCommand}"
+                    FontFamily="FellPicaRegular"
+                    FontSize="30"
+                    TextColor="{StaticResource Gray950}"
+                    BackgroundColor="{StaticResource Transparent}" />
+        </Grid>
+    </VerticalStackLayout>
+</ContentPage>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ForbiddenLands.App.Views.TalentPage"
+             xmlns:vm="clr-namespace:ForbiddenLands.App.ViewModels"
+             Title="Talenty">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Pridať" Command="{Binding AddTalentCommand}" />
+    </ContentPage.ToolbarItems>
+
+    <ScrollView>
+        <CollectionView x:Name="talentsCV"
+                        ItemsSource="{Binding Talents}"
+                        SelectionChangedCommandParameter="{Binding SelectedItem, Source={x:Reference talentsCV}}"
+                        SelectionMode="Single">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Vertical" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid RowDefinitions="80,Auto,Auto" ColumnDefinitions="20,*,*,20">
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer NumberOfTapsRequired="1"
+                                                  CommandParameter="{Binding .}"
+                                                  Command="{Binding Source={RelativeSource AncestorType={x:Type vm:TalentsViewModel}}, Path=NavigateToTalentCommand}" />
+                        </Grid.GestureRecognizers>
+
+                        <Image Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4"
+                               HeightRequest="80"
+                               Source="attack_border.webp"/>
+
+                        <BoxView Grid.Row="1" Grid.Column="0" Grid.RowSpan="2"
+                                 BackgroundColor="{StaticResource Gray950}"
+                                 WidthRequest="1"
+                                 HorizontalOptions="Center"/>
+
+                        <BoxView Grid.Row="1" Grid.Column="3" Grid.RowSpan="2"
+                                 BackgroundColor="{StaticResource Gray950}"
+                                 WidthRequest="1"
+                                 HorizontalOptions="Center" />
+
+                        <Label Grid.Row="1" Grid.Column="1"
+                               Text="{Binding Title}"
+                               FontFamily="FellPicaRegular"
+                               FontSize="30"
+                               HorizontalOptions="Start"
+                               Margin="10,0,10,0"/>
+                        <Label Grid.Row="1" Grid.Column="2"
+                               Text="{Binding MyLevel, StringFormat='Úroveň: {0}'}" 
+                               FontFamily="FellPicaRegular"
+                               FontSize="30"
+                               HorizontalOptions="End"
+                               Margin="10,0,10,0"/>
+
+                        <Label Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"
+                               Text="{Binding FullDescription}"
+                               FontFamily="FellPicaRegular"
+                               FontSize="18"
+                               Margin="10"/>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </ScrollView>
+</ContentPage>
